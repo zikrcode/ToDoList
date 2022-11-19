@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">To Do List</string>
+
+    //SplashScreen
+    <string name="zam">zikr.and.mehr</string>
+
+    //SignIn
+    <string name="email_is_required">*Email is required</string>
+    <string name="password_is_required">*Password is required</string>
+    <string name="loading">Loading</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="action_su">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+
+    //PasswordReset
+    <string name="check_email">Please check your email</string>
+    <string name="enter_your_email">Enter your user account\'s email</string>
+    <string name="reset_your_password">Reset your password</string>
+    <string name="password_reset">Enter your user account\'s email address and we will send you a password reset link.</string>
+    <string name="spre">Send password reset email</string>
+
+    //SignUp
+    <string name="email_invalid">*Email address is invalid</string>
+    <string name="password_invalid">*Password must be at least 6 characters</string>
+    <string name="signup_failed">Sign Up failed</string>
+    <string name="action_si">Already have an account?</string>
+
+    //FirebaseRecyclerAdapter
+    <string name="delete_task">Delete task ?</string>
+
+    //NewTask
+    <string name="new_task">New Task</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="task">Task</string>
+    <string name="title">Title</string>
+    <string name="title_required">*Title Required</string>
+    <string name="description">Description</string>
+    <string name="description_required">*Description Required</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="saved">Saved</string>
+    <string name="task_finished">Task finished</string>
+
+    //Settings
+    <string name="settings">Settings</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="delete_account">Delete account ?</string>
+    <string name="delete">Delete</string>
+    <string name="account_deleted">Account deleted</string>
+
+</resources>

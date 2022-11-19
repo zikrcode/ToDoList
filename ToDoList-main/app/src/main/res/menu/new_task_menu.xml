@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".NewTask" >
+
+    <item
+        android:id="@+id/bCancel"
+        android:icon="@drawable/ic_close"
+        android:title="Cancel"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bSave"
+        android:icon="@drawable/ic_check"
+        android:title="Save"
+        app:showAsAction="ifRoom" />
+
+</menu>

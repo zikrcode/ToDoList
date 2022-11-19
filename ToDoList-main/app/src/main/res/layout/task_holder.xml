@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="10dp">
+
+    <CheckBox
+        android:id="@+id/cbTaskFinishedTH"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:buttonTint="@color/primaryColor" />
+
+    <TextView
+        android:id="@+id/tvTitleTh"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:gravity="center"
+        android:paddingTop="2dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDateTh"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tvTimeTh"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="145dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:textSize="12sp" />
+
+</androidx.cardview.widget.CardView>
