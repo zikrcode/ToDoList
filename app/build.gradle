@@ -10,7 +10,7 @@ android {
         applicationId "com.zam.todolist"
         minSdk 23
         targetSdk 32
-        versionCode 1
+        versionCode 3
         versionName "2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
