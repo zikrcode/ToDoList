@@ -40,6 +40,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    // SplashScreen
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
     //FirebaseAuthentication
     implementation 'com.google.firebase:firebase-auth:22.1.1'
 
