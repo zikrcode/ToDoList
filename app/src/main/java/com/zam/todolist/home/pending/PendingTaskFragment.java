@@ -1,4 +1,4 @@
-package com.zam.todolist;
+package com.zam.todolist.home.pending;
 
 import android.os.Bundle;
 
@@ -14,6 +14,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.zam.todolist.R;
+import com.zam.todolist.home.FirebaseRecyclerAdapter;
+import com.zam.todolist.utils.AppConstants;
 
 public class PendingTaskFragment extends Fragment {
 
@@ -28,16 +31,18 @@ public class PendingTaskFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pending_task, container, false);
 
-        rvPtf=view.findViewById(R.id.rvPtf);
+        rvPtf = view.findViewById(R.id.rvPtf);
         rvPtf.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        firebaseAuth= FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
-        userId=firebaseUser.getUid();
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("tasks").child(userId);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        userId = firebaseUser.getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference()
+                .child(AppConstants.NODE_TASKS)
+                .child(userId);
 
         FirebaseRecyclerAdapter fra = new FirebaseRecyclerAdapter();
-        rvPtf.setAdapter(fra.getAdapter(databaseReference,getContext(),1));
+        rvPtf.setAdapter(fra.getAdapter(databaseReference, getContext(), 1));
         return view;
     }
 }

@@ -1,4 +1,4 @@
-package com.zam.todolist;
+package com.zam.todolist.home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,21 +22,31 @@ import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.zam.todolist.R;
+import com.zam.todolist.home.all.AllTaskFragment;
+import com.zam.todolist.home.finished.FinishedTaskFragment;
+import com.zam.todolist.home.pending.PendingTaskFragment;
+import com.zam.todolist.utils.AppConstants;
 
 public class MainActivity extends AppCompatActivity{
 
     private Toolbar tMa;
     private TabLayout tlMa;
     private ViewPager2 vpMa;
-    private final String[] sTabs={"PENDING","FINISHED","ALL"};
+    private final String[] sTabs = {
+            AppConstants.TAB_PENDING,
+            AppConstants.TAB_FINISHED,
+            AppConstants.TAB_ALL
+    };
     private FloatingActionButton fabMa;
-    private final Fragment[] myFragments = {new PendingTaskFragment(), new FinishedTaskFragment(), new AllTaskFragment()};
+    private final Fragment[] myFragments = {
+            new PendingTaskFragment(),
+            new FinishedTaskFragment(),
+            new AllTaskFragment()
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,31 +54,27 @@ public class MainActivity extends AppCompatActivity{
         SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
 
-        tMa=findViewById(R.id.tMa);
+        tMa = findViewById(R.id.tMa);
+        tlMa = findViewById(R.id.tlMa);
+        vpMa = findViewById(R.id.vpMa);
+        fabMa = findViewById(R.id.fabMa);
+
+        setupViews();
+    }
+
+    private void setupViews() {
         tMa.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(tMa);
 
-        tlMa=findViewById(R.id.tlMa);
-        vpMa=findViewById(R.id.vpMa);
         vpMa.setAdapter(new MyViewPagerAdapter(this));
+        new TabLayoutMediator(tlMa, vpMa, (tab, position) -> tab.setText(sTabs[position])).attach();
 
-        new TabLayoutMediator(tlMa, vpMa, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText(sTabs[position]);
-            }
-        }).attach();
-
-        fabMa=findViewById(R.id.fabMa);
-        fabMa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, NewTask.class);
-                startActivity(intent);
-            }
+        fabMa.setOnClickListener(view -> {
+            Intent intent = new Intent(this, NewTask.class);
+            startActivity(intent);
         });
 
-        loadAd(this,findViewById(R.id.avMa));
+        loadAd(this, findViewById(R.id.avMa));
     }
 
     @Override
@@ -79,12 +85,13 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(MainActivity.this, Settings.class);
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
         return true;
     }
 
     private class MyViewPagerAdapter extends FragmentStateAdapter {
+
         public MyViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);
         }
@@ -102,11 +109,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public static void loadAd(Context context, View myAdView) {
-        MobileAds.initialize(context, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
-            }
-        });
+        MobileAds.initialize(context, initializationStatus -> {});
 
         AdView adView = (AdView) myAdView;
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -115,14 +118,11 @@ public class MainActivity extends AppCompatActivity{
 
     public static void loadNativeAd(Context context, TemplateView myTemplate) {
         MobileAds.initialize(context);
-        AdLoader adLoader = new AdLoader.Builder(context, "ca-app-pub-7270738426543727/4960626218")
-                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
-                    @Override
-                    public void onNativeAdLoaded(@NonNull NativeAd nativeAd) {
-                        NativeTemplateStyle styles = new NativeTemplateStyle.Builder().build();
-                        myTemplate.setStyles(styles);
-                        myTemplate.setNativeAd(nativeAd);
-                    }
+        AdLoader adLoader = new AdLoader.Builder(context, AppConstants.AD_UNIT_ID)
+                .forNativeAd(nativeAd -> {
+                    NativeTemplateStyle styles = new NativeTemplateStyle.Builder().build();
+                    myTemplate.setStyles(styles);
+                    myTemplate.setNativeAd(nativeAd);
                 })
                 .build();
 

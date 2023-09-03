@@ -1,29 +1,28 @@
-package com.zam.todolist;
+package com.zam.todolist.auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.zam.todolist.R;
 
 public class PasswordReset extends AppCompatActivity {
 
-    private Toolbar tPr;
     private FirebaseAuth firebaseAuth;
+    private Toolbar tPr;
     private Button bPasswordReset;
     private TextInputLayout tilResetPassword;
     private EditText etResetPassword;
@@ -32,26 +31,23 @@ public class PasswordReset extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_password_reset);
 
-        tPr=findViewById(R.id.tPr);
+        firebaseAuth = FirebaseAuth.getInstance();
+        tPr = findViewById(R.id.tPr);
+        bPasswordReset = findViewById(R.id.bPasswordReset);
+
+        setupViews();
+    }
+
+    private void setupViews() {
         tPr.setTitle(R.string.reset_your_password);
         tPr.setTitleTextColor(getColor(R.color.white));
         setSupportActionBar(tPr);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tPr.setNavigationIcon(R.drawable.ic_back);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-
-        bPasswordReset=findViewById(R.id.bPasswordReset);
-        bPasswordReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendPasswordResetEmail();
-            }
-        });
-
+        bPasswordReset.setOnClickListener(view -> sendPasswordResetEmail());
     }
 
     @Override
@@ -67,29 +63,25 @@ public class PasswordReset extends AppCompatActivity {
     }
 
     private void sendPasswordResetEmail(){
-        tilResetPassword=findViewById(R.id.tilResetPassword);
-        etResetPassword=findViewById(R.id.etResetPassword);
-        emailPr=etResetPassword.getText().toString();
+        tilResetPassword = findViewById(R.id.tilResetPassword);
+        etResetPassword = findViewById(R.id.etResetPassword);
+        emailPr = etResetPassword.getText().toString();
 
-        if (TextUtils.isEmpty(emailPr)){
+        if (TextUtils.isEmpty(emailPr)) {
             tilResetPassword.setHelperTextEnabled(true);
             tilResetPassword.setHelperText(getString(R.string.email_is_required));
         }
-        if (!TextUtils.isEmpty(emailPr)){
+        if (!TextUtils.isEmpty(emailPr)) {
             tilResetPassword.setHelperTextEnabled(false);
             firebaseAuth.sendPasswordResetEmail(emailPr)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(PasswordReset.this,getString(R.string.check_email),Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(PasswordReset.this,SignIn.class);
-                                startActivity(intent);
-                                finishAffinity();
-                            }
-                            else {
-                                Toast.makeText(PasswordReset.this,getString(R.string.something_went_wrong),Toast.LENGTH_SHORT).show();
-                            }
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(this, getString(R.string.check_email), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(this, SignIn.class);
+                            startActivity(intent);
+                            finishAffinity();
+                        } else {
+                            Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
                         }
                     });
         }

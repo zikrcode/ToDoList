@@ -11,32 +11,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
         <activity
-            android:name=".PasswordReset"
+            android:name=".auth.PasswordReset"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.ToDoList"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".home.Settings"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.ToDoList"
             android:exported="false" />
         <activity
-            android:name=".NewTask"
+            android:name=".home.NewTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.ToDoList"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".home.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.App.ToDoList"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".auth.SignUp"
             android:screenOrientation="portrait"
             android:exported="false"
             android:theme="@style/ThemeApp.Onboarding" />
         <activity
-            android:name=".SignIn"
+            android:name=".auth.SignIn"
             android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/ThemeApp.Onboarding">
