@@ -1,16 +1,28 @@
 1<?xml version="1.0" encoding="utf-8"?>
-2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.google.android.ads.nativetemplates" >
-4
-5    <uses-sdk
-6        android:minSdkVersion="16"
-6-->D:\AndroidStudioProjects\AS 2\to-do-list\To Do List\nativetemplates\src\main\AndroidManifest.xml
-7        android:targetSdkVersion="30" />
-7-->D:\AndroidStudioProjects\AS 2\to-do-list\To Do List\nativetemplates\src\main\AndroidManifest.xml
-8
-9    <application android:supportsRtl="true" >
-9-->D:\AndroidStudioProjects\AS 2\to-do-list\To Do List\nativetemplates\src\main\AndroidManifest.xml:3:3-5:17
-9-->D:\AndroidStudioProjects\AS 2\to-do-list\To Do List\nativetemplates\src\main\AndroidManifest.xml:3:16-42
-10    </application>
-11
-12</manifest>
+2<!--
+3  ~ Copyright (C) 2023 Zokirjon Mamadjonov
+4  ~
+5  ~ Licensed under the Apache License, Version 2.0 (the "License");
+6  ~ you may not use this file except in compliance with the License.
+7  ~ You may obtain a copy of the License at
+8  ~
+9  ~     http://www.apache.org/licenses/LICENSE-2.0
+10  ~
+11  ~ Unless required by applicable law or agreed to in writing, software
+12  ~ distributed under the License is distributed on an "AS IS" BASIS,
+13  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14  ~ See the License for the specific language governing permissions and
+15  ~ limitations under the License.
+16-->
+17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+18    package="com.google.android.ads.nativetemplates" >
+19
+20    <uses-sdk android:minSdkVersion="16" />
+20-->/Users/zokirjon/Main/AndroidStudioProjects/java/to-do-list/To Do List/nativetemplates/src/main/AndroidManifest.xml
+21
+22    <application android:supportsRtl="true" >
+22-->/Users/zokirjon/Main/AndroidStudioProjects/java/to-do-list/To Do List/nativetemplates/src/main/AndroidManifest.xml:18:3-20:17
+22-->/Users/zokirjon/Main/AndroidStudioProjects/java/to-do-list/To Do List/nativetemplates/src/main/AndroidManifest.xml:18:16-42
+23    </application>
+24
+25</manifest>
