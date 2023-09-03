@@ -25,7 +25,7 @@ public class AppConstants {
     public static final String TAB_PENDING = "PENDING";
     public static final String TAB_FINISHED = "FINISHED";
     public static final String TAB_ALL = "ALL";
-    public static final String AD_UNIT_ID = "ca-app-pub-7270738426543727/4960626218";
+    public static final String AD_UNIT_ID = "--------------------------------------";
 
     //NewTask
     public static final String NODE_TASKS = "tasks";
